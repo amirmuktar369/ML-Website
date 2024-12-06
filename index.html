@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="jQuery v3.7.1.js"></script>
+    <script type="module" src="script.mjs"></script>
+
+</head>
+<body>
+    
+    <!-- Defining Problem Set -->
+    <div class="what-problem">
+        <h2>What kind of problem are you solving?</h2>
+
+        <div>
+            <abbr title="Solve a problem that involves continuous numeric values (prices, weights, etc)."><button class="regression">REGRESSION</button></abbr>
+
+            <abbr title="Solve a problem that involves categorical values (gender, checking if something occurs or not, etc)."><button class="classification">CLASSIFICATION</button></abbr>
+
+            <abbr title="Cluster data based on similar patterns or attributes (customer segmentation)."><button class="clustering">CLUSTERING</button></abbr>
+
+        </div>
+    </div>
+
+
+    <!-- Responsible for determining necessary steps for model training -->
+    <div class="main-container">
+        <h2></h2>
+        <details id="regression-details">
+            <summary>Description: </summary>
+            <h4>General Definition</h4>
+            <ul type="none">
+                <li>Regression is a statistical method used to understand relationships between variables and to make predictions. It estimates the value of one thing (the dependent variable) based on the values of one or more other things (the independent variables).</li>
+                <br>
+                <li>Think of it as a way to answer questions like:</li>
+                <ul>
+                    <li>How much will sales increase if we spend more on advertising?</li>
+                    <li>What will the temperature be tomorrow based on historical weather data?</li>
+                </ul>
+            </ul>
+
+            <div><img src="linear-regression.jpeg" alt=""></div>
+
+            <br>
+            <h4>Types of Regression</h4>
+            <ul type="none">
+                <li>Regression comes in many forms, depending on the problem:</li>
+                <ol type="1">
+                    <li><b>Linear Regression:</b> Assumes a straight-line relationship between variables.
+                        <ul type="none">
+                            <li><b>Example:</b> Predicting house prices based on size.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Polynomial Regression:</b> Handles more complex relationships by fitting curves.
+                        <ul type="none">
+                            <li><b>Example:</b> Predicting crop yield based on rainfall and temperature patterns.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Logistic Regression:</b> Used for problems where the outcome is a category (e.g., yes/no, true/false).
+                        <ul type="none">
+                            <li><b>Example:</b> Predicting whether a customer will buy a product.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Ridge and Lasso Regression:</b> Advanced versions of Linear Regression used when there are many variables.
+                        <ul type="none">
+                            <li><b>Example:</b> Predicting stock prices using multiple financial indicators.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Multiple Regression:</b> Explores the relationship between one dependent variable and multiple independent variables.
+                        <ul type="none">
+                            <li><b>Example:</b> Predicting a car’s fuel efficiency based on weight, engine size, and age.</li>
+                        </ul>
+                    </li><br>
+                </ul>
+            </ul>
+
+            <br>
+            <h4>Use Cases</h4>
+            <ul type="none">
+                <li>Regression methods are widely used across industries:</li>
+                <ul>
+                    <li><b>Business:</b> Forecasting revenue, customer demand, or sales based on marketing data.</li><br>
+                    <li><b>Healthcare:</b> Predicting patient outcomes like recovery time or disease progression.</li><br>
+                    <li><b>Economics:</b> Analyzing relationships between factors like inflation and unemployment.</li><br>
+                    <li><b>Environment:</b> Estimating climate changes based on greenhouse gas emissions.</li><br>
+                    <li><b>Sports:</b> Predicting team performance based on player statistics.</li><br>
+                </ul>
+            </ul>
+
+            <br>
+            <h4>Real-World Problems Regression Can Handle</h4>
+            <ol type="1">
+                <li>Estimating housing prices based on location, size, and amenities.</li>
+                <li>Forecasting electricity consumption in a city based on weather and population.</li>
+                <li>Predicting the likelihood of a loan default based on credit score and income.</li>
+                <li>Determining how much profit a business will make based on costs and market trends.</li>
+            </ol>
+
+            <br>
+            <h4>Strengths of Regression</h4>
+            <ol type="1">
+                <li><b>Flexibility:</b> Can model simple relationships (like Linear Regression) or complex ones (like Polynomial Regression).</li><br>
+                <li><b>Interpretability:</b> Shows how variables influence each other.</li><br>
+                <li><b>Predictive Power:</b> Useful for making future estimates.</li><br>
+                <li><b>Customizability:</b> Adaptable to different types of data and relationships.</li><br>
+            </ol>
+
+            <br>
+            <h4>Weaknesses of Regression</h4>
+            <ol type="1">
+                <li><b>Overfitting:</b> If the model is too complex, it may perform poorly on new data.</li><br>
+                <li><b>Assumption Dependence:</b> Many types of regression rely on specific assumptions about data (e.g., Linear Regression assumes linear relationships).</li><br>
+                <li><b>Sensitive to Outliers:</b> Extreme data points can distort predictions.</li><br>
+                <li><b>Multicollinearity:</b> Strong correlations between independent variables can confuse the model.</li><br>
+            </ol>
+
+            <br>
+            <h4>Real-Life Examples</h4>
+            <ul type="none">
+                <li><b>Example 1:</b> Predicting Exam Scores</li>
+                <li>
+                    <li>A teacher uses regression to predict student scores based on study hours and attendance.</li>
+                    <ul type="none">
+                        <b>Formula:</b><br>
+                        <span>\text{Score} = 5 \times \text{Study Hours} + 2 \times \text{Attendance}</span>
+                    </ul>
+                </li>
+
+                <br>
+                <li><b>Example 2:</b> Predicting Climate Impact</li>
+                <li>
+                    <li>Scientists use regression to estimate future sea levels based on greenhouse gas emissions and global temperatures.</li>
+                </li>
+
+                <br>
+                <li><b>Example 3:</b> Loan Approval</li>
+                <li>
+                    <li>Banks use logistic regression to decide whether to approve loans. The model predicts the likelihood of repayment based on factors like income and debt.</li>
+                </li>
+            </ul>
+
+            <br>
+            <h4>When Is Regression a Good Choice?</h4>
+            <ul>
+                <li>When the goal is to predict or estimate outcomes.</li>
+                <li>When you want to understand the relationship between variables.</li>
+                <li>When data is structured and relationships between variables can be quantified.</li>
+            </ul>
+
+            <br>
+            <h4>When Not to Use Regression</h4>
+            <ul>
+                <li>When the data is highly complex and involves patterns regression can't capture (e.g., images or text).</li>
+                <li>When relationships between variables are not clear or meaningful.</li>
+                <li>When there's insufficient data to train the model effectively.</li>
+            </ul>
+
+            <br>
+            <h4>Key Takeaways</h4>
+            <ul type="none">
+                <li>Regression is a versatile tool for analyzing and predicting real-world phenomena. It works best when:</li>
+                <ul>
+                    <li>The relationships between variables are clear and can be quantified.</li>
+                    <li>There's enough quality data to make accurate predictions.</li>
+                </ul>
+            </ul>
+
+            It's like a Swiss Army knife for data analysis: useful for solving a wide variety of problems, but it requires the right type of data and application for the best results.
+
+        </details>
+
+        <details id="classification-details">
+            <summary>Description: </summary>
+            <h4>General Definition</h4>
+            <ul type="none">
+                <li>Classification is a machine learning and statistical method used to group data into predefined categories or labels. It predicts which category an item belongs to based on input data.</li>
+                <br>
+                <li>For example:</li>
+                <ul>
+                    <li>Email filters classify messages as spam or not spam.</li>
+                    <li>A medical diagnosis system classifies whether a tumor is benign or malignant.</li>
+                </ul>
+            </ul>
+
+            <div><img src="classification.jpeg" alt=""></div>
+
+            <br>
+            <h4>Types of Classification</h4>
+            <ul type="none">
+                <li>Classification techniques vary based on the type of problem and data:</li>
+                <ol type="1">
+                    <li><b>Binary Classification:</b> Used when there are only two possible outcomes.
+                        <ul type="none">
+                            <li><b>Example:</b> Predicting whether a loan will be approved (yes/no).</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Multi-class Classification:</b> Deals with problems involving more than two categories.
+                        <ul type="none">
+                            <li><b>Example:</b> Classifying a type of animal as dog, cat, or bird.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Multi-label Classification:</b> Each item can belong to multiple categories simultaneously.
+                        <ul type="none">
+                            <li><b>Example:</b> Classifying a movie as both action and comedy.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Imbalanced Classification:</b> Designed to handle datasets where one category significantly outnumbers others.
+                        <ul type="none">
+                            <li><b>Example:</b> Detecting rare diseases where most cases are healthy.</li>
+                        </ul>
+                    </li><br>
+                </ul>
+            </ul>
+
+            <br>
+            <h4>Use Cases</h4>
+            <ul type="none">
+                <li>Classification is widely used in areas requiring decision-making or categorization:</li>
+                <ul>
+                    <li><b>Healthcare:</b> Predicting disease diagnosis based on symptoms.</li><br>
+                    <li><b>Finance:</b> Detecting fraudulent transactions.</li><br>
+                    <li><b>Retail:</b> Recommending products based on past purchases.</li><br>
+                    <li><b>Education:</b> Classifying students into performance categories (e.g., excellent, average, below average).</li><br>
+                    <li><b>Technology:</b> Identifying objects in images or videos.</li><br>
+                </ul>
+            </ul>
+
+            <br>
+            <h4>Real-World Problems Classification Can Handle</h4>
+            <ol type="1">
+                <li>Email systems predicting whether a message is spam or not.</li>
+                <li>Social media platforms classifying content into categories like sports, news, or entertainment.</li>
+                <li>Self-driving cars recognizing road signs or pedestrians.</li>
+                <li>Banks assessing the creditworthiness of loan applicants.</li>
+            </ol>
+
+            <br>
+            <h4>Strengths of Classification</h4>
+            <ol type="1">
+                <li><b>Wide Applicability:</b> Useful for both simple and complex decision-making problems.</li><br>
+                <li><b>Automation:</b> Shows how variables influence each other.Can replace manual categorization tasks, saving time and effort.</li><br>
+                <li><b>High Accuracy:</b> Well-trained models often outperform human decision-making.</li><br>
+                <li><b>Customizable Models:</b> Adaptable to different data types, from text to images.</li><br>
+            </ol>
+
+            <br>
+            <h4>Weaknesses of Classification</h4>
+            <ol type="1">
+                <li><b>Dependence on Quality Data:</b> Performance heavily relies on having accurate and representative training data.</li><br>
+                <li><b>Overfitting:</b> Complex models might perform well on training data but fail with new data.</li><br>
+                <li><b>Class Imbalance:</b> Models can struggle if one category dominates the dataset.</li><br>
+                <li><b>Limited Interpretability:</b> Some classification models (like neural networks) can act as black boxes, making it hard to understand how they arrive at predictions.</li><br>
+            </ol>
+
+            <br>
+            <h4>Real-Life Examples</h4>
+            <ul type="none">
+                <li><b>Example 1:</b> Fraud Detection</li>
+                <li>
+                    <li>A bank uses classification to flag transactions as either fraudulent or legitimate based on features like transaction amount, location, and time.</li>
+                </li>
+
+                <br>
+                <li><b>Example 2:</b> Image Recognition</li>
+                <li>
+                    <li>A smartphone uses classification to identify whether an image contains a dog, cat, or human.</li>
+                </li>
+
+                <br>
+                <li><b>Example 3:</b> Customer Segmentation</li>
+                <li>
+                    <li>An e-commerce company classifies customers as high spenders, medium spenders, or low spenders based on purchase history.</li>
+                </li>
+            </ul>
+
+            <br>
+            <h4>When Is Classification a Good Choice?</h4>
+            <ul>
+                <li>When the goal is to assign categories to data.</li>
+                <li>When decisions need to be made automatically based on input data (e.g., approving or rejecting an application).</li>
+                <li>When patterns in the data are meaningful and can be linked to specific outcomes.</li>
+            </ul>
+
+            <br>
+            <h4>When Not to Use Classification</h4>
+            <ul>
+                <li>When there are no clear categories to assign data (e.g., predicting numerical values—this is regression).</li>
+                <li>When the relationships between inputs and categories are too complex to model effectively.</li>
+                <li>When there is a lack of enough labeled data to train the model.</li>
+            </ul>
+
+            <br>
+            <h4>Key Takeaways</h4>
+            <ul type="none">
+                <li>Classification is a powerful tool for decision-making and automation. Its success depends on the quality of data and the problem being addressed. When used effectively, it can make processes faster, more accurate, and more efficient.</li><br>
+                <li>Think of classification as a decision-making assistant: it learns from past examples and applies that knowledge to new situations to decide which category something belongs to.</li>
+            </ul>
+
+        </details>
+
+        <details id="clustering-details">
+            <summary>Description: </summary>
+            <h4>General Definition</h4>
+            <ul type="none">
+                <li>Clustering is an unsupervised machine learning method used to group similar data points into clusters (or groups) based on their characteristics. Unlike classification, clustering doesn’t require predefined categories or labels. Instead, it discovers patterns and structures within data.</li>
+                <br>
+                <li>For example:</li>
+                <ul>
+                    <li>An online retailer might group customers based on purchasing behavior.</li>
+                    <li>A botanist could cluster plants based on their physical traits.</li>
+                </ul>
+            </ul>
+
+            <div><img src="clustering.jpeg" alt=""></div>
+
+            <br>
+            <h4>Types of Clustering</h4>
+            <ul type="none">
+                <li>There are various approaches to clustering, each suited for different kinds of problems:</li>
+                <ol type="1">
+                    <li><b>Centroid-Based Clustering:</b> Groups data points around central points (centroids).
+                        <ul type="none">
+                            <li><b>Example:</b> Segmenting customers by purchasing patterns.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Hierarchical Clustering:</b> Builds a hierarchy of clusters, either by merging smaller clusters (agglomerative) or splitting larger ones (divisive).
+                        <ul type="none">
+                            <li><b>Example:</b> Organizing species in biology based on similarities.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Density-Based Clustering:</b> Forms clusters where data points are densely packed, separating outliers.
+                        <ul type="none">
+                            <li><b>Example:</b> Identifying geographical areas of high population density.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Distribution-Based Clustering:</b> Assumes clusters follow a probability distribution and assigns data points accordingly.
+                        <ul type="none">
+                            <li><b>Example:</b> Analyzing genetic sequences for shared traits.</li>
+                        </ul>
+                    </li><br>
+                    <li><b>Fuzzy Clustering:</b> Assigns data points to multiple clusters with varying degrees of membership.
+                        <ul type="none">
+                            <li><b>Example:</b> Grouping consumers who overlap in buying preferences.</li>
+                        </ul>
+                    </li><br>
+                </ul>
+            </ul>
+
+            <br>
+            <h4>Use Cases</h4>
+            <ul type="none">
+                <li>Clustering is widely used in areas requiring discovery of hidden patterns or grouping similar data points:</li>
+                <ul>
+                    <li><b>Marketing:</b> Segmenting customers into groups based on demographics and behavior.</li><br>
+                    <li><b>Healthcare:</b> Grouping patients by symptoms or genetic profiles for personalized treatment.</li><br>
+                    <li><b>Retail:</b> Categorizing products based on customer preferences and purchase history.</li><br>
+                    <li><b>Image Processing:</b> Identifying similar patterns or features in image data.</li><br>
+                    <li><b>Urban Planning:</b> Clustering locations based on crime rates or traffic patterns.</li><br>
+                </ul>
+            </ul>
+
+            <br>
+            <h4>Real-World Problems Clustering Can Handle</h4>
+            <ol type="1">
+                <li>Grouping search engine results based on similar topics.</li>
+                <li>Identifying potential markets for a product by clustering regions with similar demographics.</li>
+                <li>Detecting anomalies (outliers) in network traffic to identify cyber-attacks.</li>
+                <li>Classifying different types of stars in astronomy based on their properties like brightness and temperature.</li>
+                <li>Grouping social media users with similar interests or posting habits.</li>
+            </ol>
+
+            <br>
+            <h4>Strengths of Clustering</h4>
+            <ol type="1">
+                <li><b>No Labels Required</b> Works without predefined categories, making it suitable for exploratory tasks.</li><br>
+                <li><b>Pattern Discovery:Automation:</b> Reveals hidden relationships and structures in data.</li><br>
+                <li><b>Flexible Applications:</b> Can handle a wide variety of data types (numerical, categorical, text, etc.).</li><br>
+                <li><b>Versatile:</b> Useful in both small and large datasets.</li><br>
+            </ol>
+
+            <br>
+            <h4>Weaknesses of Clustering</h4>
+            <ol type="1">
+                <li><b>Choosing the Number of Clusters:</b> Deciding how many clusters to form can be subjective.</li><br>
+                <li><b>Sensitive to Noise and Outliers:</b> Some clustering methods (e.g., K-Means) are easily influenced by extreme values.</li><br>
+                <li><b>Interpretability:</b> Clusters may not always have a clear meaning or real-world relevance.</li><br>
+                <li><b>Scalability:</b> Computationally expensive for very large datasets.</li><br>
+                <li><b>Dependence on Data Representation:</b> The quality of clustering relies heavily on how the data is structured and preprocessed.</li>
+            </ol>
+
+            <br>
+            <h4>Real-Life Examples</h4>
+            <ul type="none">
+                <li><b>Example 1:</b> Customer Segmentation</li>
+                <li>
+                    <li>A retail company uses clustering to group customers into:</li>
+                    <ul>
+                        <li>Frequent buyers.</li>
+                        <li>Occasional buyers.</li>
+                        <li>One-time buyers. This helps tailor marketing strategies for each group.</li>
+                    </ul>
+                </li>
+
+                <br>
+                <li><b>Example 2:</b> Social Media Analysis</li>
+                <li>
+                    <li>A social media platform clusters users based on their interests to recommend relevant content or ads.</li>
+                </li>
+
+                <br>
+                <li><b>Example 3:</b> Fraud Detection</li>
+                <li>
+                    <li>Banks cluster transaction patterns and flag unusual clusters as potential fraud.</li>
+                </li>
+            </ul>
+
+            <br>
+            <h4>When Is Clustering a Good Choice?</h4>
+            <ul>
+                <li>When the goal is to discover natural groupings in data.</li>
+                <li>When no labels or categories are available.</li>
+                <li>When seeking to understand the underlying structure of data.</li>
+            </ul>
+
+            <br>
+            <h4>When Not to Use Clustering</h4>
+            <ul>
+                <li>When the data is well-labeled, making classification a better option.</li>
+                <li>When there's no meaningful grouping to be discovered in the data.</li>
+                <li>When the data has too many noisy or irrelevant features.</li>
+            </ul>
+
+            <br>
+            <h4>Key Takeaways</h4>
+            <ul type="none">
+                <li>Clustering is a powerful tool for exploring and organizing data when you don't know what patterns to expect. It excels at uncovering hidden relationships and dividing data into meaningful groups.</li><br>
+                <li>Think of clustering as a way to organize a messy room: it groups similar items together (e.g., books, clothes, gadgets) without needing a predefined list. This flexibility makes clustering invaluable in fields like marketing, healthcare, and urban planning, where discovering insights from raw data is key.</li>
+            </ul>
+
+        </details>
+
+        <br><br><hr><br>
+        <div class="import-data">
+            <h4>Import Data (.csv)</h4>
+            <input type="file" name="data-path" id="data-path" accept=".csv" required>
+            <br>
+            <abbr title="Make sure to select a path to your data before clicking">
+                <button id="import-btn">Import</button>
+            </abbr>
+
+            <div class="filter-data">
+                <select name="filter" id="filter">
+                    <option value="All">All</option>
+                    <option value="First n" selected>First n</option>
+                    <option value="Last n">Last n</option>
+                </select>
+                <input type="number" name="n" id="n" value="5" min="0">
+                <button>Apply</button>
+            </div>
+
+            <div id="output">
+                <table></table>
+                <div class="dim"></div>
+            </div>
+        </div>
+
+        <div id="feat-label-sel">
+            <div id="feature-sel">
+                <h3>Select Feature(s)</h3>
+                <div class="feats-holder"></div>
+            </div>
+            <div class="reselect-feats-holder">
+                <abbr title="Click to reselect feature(s)">
+                    <button id="feat-resel-btn">Reselect feature(s)</button></abbr>
+            </div>
+            <div id="label-sel">
+                <h3>Select Label(s)</h3>
+                <div class="labels-holder"></div>
+            </div>
+            <div class="reselect-labels-holder">
+                <abbr title="Click to reselect label(s)">
+                    <button id="label-resel-btn">Reselect label(s)</button></abbr>
+            </div>
+        </div>
+
+        <br><br>
+        <br><br>
+        <div>
+            <span></span>
+            <button id="train-btn">Start Training ⚙</button>
+        </div>
+    </div>
+
+    <div class="model-train-screen">
+        <div>
+            <img src="gears-5875_128.gif" alt="">
+        </div>
+        <progress></progress>
+    </div>
+
+</body>
+</html>
